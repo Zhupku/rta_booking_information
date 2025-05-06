@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: RTA Availability Check",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/scrape_availability.py",
+            "args": [
+                "621",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
