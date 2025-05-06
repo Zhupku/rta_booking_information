@@ -32,15 +32,17 @@ def find_best_available_slot(result, current_booking_datetime):
                             continue
                             
                         # Check if the slot is within the date range
-                        # if date_range_start <= slot_datetime <= date_range_end:
+                        if date_range_start <= slot_datetime <= date_range_end:
                             
                             # Check if the slot is before the current booking time (if exists)
-                        if settings['have_booking'] and current_booking_datetime:
-                            if slot_datetime >= current_booking_datetime:
-                                continue
-                        
-                        slot['slot_datetime'] = slot_datetime
-                        filtered_slots.append(slot)
+                            if settings['have_booking'] and current_booking_datetime:
+                                # Allow Saturday slots even if they're after current booking
+                                is_saturday = slot_datetime.weekday() == 5
+                                if slot_datetime >= current_booking_datetime and not is_saturday:
+                                    continue
+                            
+                            slot['slot_datetime'] = slot_datetime
+                            filtered_slots.append(slot)
                 except ValueError:
                     # Skip slots with invalid datetime format
                     continue
