@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/scrape_availability.py",
             "args": [
-                "621",
+                "241",
             ],
             "console": "integratedTerminal",
             "justMyCode": true

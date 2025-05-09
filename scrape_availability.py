@@ -162,7 +162,7 @@ while True:
         best_slot_info = "No suitable slot found"
         
         while current_attempt < max_attempts and not best_slot:
-            time.sleep(settings['wait_timer'])
+            time.sleep(settings['wait_timer_car'])
             driver.find_element(By.ID,"nextButton").click()
 
             current_attempt += 1
@@ -177,6 +177,7 @@ while True:
                 }
             }
 
+            time.sleep(settings['wait_timer_car'])
             if(driver.find_element(By.ID,"getEarliestTime").size!=0):
                 if(driver.find_element(By.ID,"getEarliestTime").is_displayed()):
                     if(driver.find_element(By.ID,"getEarliestTime").is_enabled()):
@@ -327,4 +328,4 @@ while True:
     except Exception as e:
         print(f"Error: {str(e)}")
         driver.quit()
-        exit(1)
+        # exit(1)
